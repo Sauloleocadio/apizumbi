@@ -5,7 +5,7 @@ class SobreviventesnaoinfectadosController {
     // Listagem de não infectados
 
     const listanaoinfectados = await SobreviventesnaoInfectados.findAll({
-      where: { infectados: false },
+      where: { infectado: false },
     });
 
     return res.json(listanaoinfectados);
