@@ -14,6 +14,13 @@ class Itens extends Model {
 
     return this;
   }
+
+  static associate(models) {
+    this.belongsTo(models.Sobreviventes, {
+      foreignKey: 'itens_id',
+      as: 'itensrelacionamento',
+    });
+  }
 }
 
 export default Itens;

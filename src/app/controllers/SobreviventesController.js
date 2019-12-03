@@ -1,8 +1,18 @@
+import * as Yup from 'yup';
 import Sobreviventes from '../models/Sobreviventes';
 
 class SobreviventesController {
   async store(req, res) {
     // Criação de sobreviventes
+    const schema = Yup.object().shape({
+      itens_id: Yup.number().required(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res
+        .status(400)
+        .json({ error: 'Sobrevivente não tem item vinculado a sua mochila ' });
+    }
 
     const {
       id,
@@ -15,16 +25,6 @@ class SobreviventesController {
       infectado,
       reporteinfectado,
     } = await Sobreviventes.create(req.body);
-
-    const sobreviventecomitem = await Sobreviventes.findOne({
-      where: { itens_id, id: true },
-    });
-
-    if (!sobreviventecomitem) {
-      return res
-        .status(401)
-        .json({ error: 'Sobrevivente não tem item vinculado a sua mochila ' });
-    }
 
     return res.json({
       id,
