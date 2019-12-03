@@ -1,10 +1,11 @@
 import Sequelize from 'sequelize';
 
 import Sobreviventes from '../app/models/Sobreviventes';
+import Itens from '../app/models/Itens';
 
 import databaseConfig from '../config/database';
 
-const models = [Sobreviventes];
+const models = [Sobreviventes, Itens];
 
 class Database {
   constructor() {
