@@ -8,7 +8,7 @@ import SobreviventesnaoinfectadosController from './app/controllers/Sobrevivente
 const routes = new Router();
 
 routes.post('/sobreviventes', SobreviventesController.store);
-routes.put('/sobreviventes', SobreviventesController.update);
+routes.put(`/sobreviventes/:id`, SobreviventesController.update);
 
 routes.get('/sobreviventesinfectados', SobreviventesinfectadosController.index);
 
